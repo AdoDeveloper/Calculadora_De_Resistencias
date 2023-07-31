@@ -1,0 +1,189 @@
+.tab {
+  display: none;
+}
+
+.active-tab {
+  display: block;
+}
+
+
+/**/
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  max-width: 800px;
+  /* Ajusta este valor según el ancho deseado */
+  margin: 0 auto;
+  /* Centrar el contenido en la página */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  max-width: 130px;
+  background-color: #4d88ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #007bff;
+}
+
+/* Estilos para los botones de selección de bandas */
+.banda-btn {
+  max-width: 130px;
+  background-color: #41b623;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.banda-btn.active-btn {
+  background-color: #ff9100;
+}
+
+/**/
+
+.tab {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  /* Establecer un ancho máximo para las pestañas */
+  max-width: 600px;
+  margin: 0 auto;
+  /* Centrar las pestañas */
+}
+
+input[type="number"] {
+  width: 96%;
+  padding: 6px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+select {
+  width: 100%;
+  padding: 5px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+}
+
+.tab p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#resultado1,
+#resultado2,
+#resultado3 {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+#resultado1 p,
+#resultado2 p,
+#resultado3 p {
+  font-size: 18px;
+  /* Ajusta este valor según el tamaño de letra deseado */
+}
+
+
+
+select option {
+  background-color: #000;
+  color: #fff;
+}
+
+button[onclick^="calcular"] {
+  background-color: #54015c;
+}
+
+button[onclick^="calcular"]:hover {
+  background-color: #ff9800;
+}
+
+
+/**/
+
+/* Estilos para el color-name */
+.color-name {
+  float: left;
+  text-align: left;
+}
+
+/* Estilos para el color-value */
+.color-value {
+  float: right;
+  text-align: right;
+}
+  
+  /* Estilos para cada color específico de las bandas */
+  option#negro { background-color: #000; color: #fff; }
+  option#marron { background-color: #800000; color: #fff; }
+  option#rojo { background-color: #FF0000; color: #fff; }
+  option#naranja { background-color: #FFA500; }
+  option#amarillo { background-color: #FFFF00; }
+  option#verde { background-color: #008000; color: #fff; }
+  option#azul { background-color: #0000FF; color: #fff; }
+  option#violeta { background-color: #EE82EE; color: #fff;}
+  option#gris { background-color: #808080; color: #fff; }
+  option#blanco { background-color: #FFFFFF; color: #000;}
+
+  /* Estilos para cada color específico del multiplicador */
+  #color-negro { background-color: #000; color: #fff; }
+  #color-marron { background-color: #800000; color: #fff; }
+  #color-rojo { background-color: #FF0000; color: #fff; }
+  #color-naranja { background-color: #FFA500; }
+  #color-amarillo { background-color: #FFFF00; }
+  #color-verde { background-color: #008000; color: #fff; }
+  #color-azul { background-color: #0000FF; color: #fff; }
+  #color-violeta { background-color: #EE82EE; }
+  #color-gris { background-color: #808080; color: #fff; }
+  #color-blanco { background-color: #FFFFFF; color: #000; }
+  #color-oro { background-color: #DAA520; }
+  #color-plata { background-color: #C0C0C0; }
+
+  /* Estilos para cada opción de tolerancia específica */
+  #tolerancia-marron { background-color: #800000; color: #fff; }
+  #tolerancia-rojo { background-color: #FF0000; color: #fff; }
+  #tolerancia-verde { background-color: #008000; color: #fff; }
+  #tolerancia-azul { background-color: #0000FF; color: #fff; }
+  #tolerancia-violeta { background-color: #EE82EE; }
+  #tolerancia-gris { background-color: #808080; color: #fff; }
+  #tolerancia-oro { background-color: #DAA520; }
+  #tolerancia-plata { background-color: #C0C0C0; }
+
+  /* Estilos para cada opción de ppm específica */
+  #ppm-marron { background-color: #800000; color: #fff; }
+  #ppm-rojo { background-color: #FF0000; color: #fff; }
+  #ppm-naranja { background-color: #FFA500; }
+  #ppm-amarillo { background-color: #FFFF00; }
+  #ppm-azul { background-color: #0000FF; color: #fff; }
+  #ppm-violeta { background-color: #EE82EE; }

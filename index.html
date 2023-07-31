@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Resistencias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Calculadora de Resistencias</h1>
+
+<!-- Pestañas para seleccionar la cantidad de bandas -->
+<button class="banda-btn" onclick="abrirTab(event, '4bandas')">4 Bandas</button>
+<button class="banda-btn" onclick="abrirTab(event, '5bandas')">5 Bandas</button>
+<button class="banda-btn" onclick="abrirTab(event, '6bandas')">6 Bandas</button>
+
+
+    <!-- Calculadora para 4 bandas -->
+<div id="4bandas" class="tab active-tab">
+    <p><strong>Valor de resistencia (en ohmios):</strong>
+        <input type="number" id="valor_resistencia_4" onchange="actualizarColores()" />
+    </p>
+    <button onclick="calcularColores(4)">Calcular</button>
+    <p><strong id="banda">Banda 1:</strong>
+        <select id="banda1_4" onchange="mostrarColor('banda1_4')">
+            <option value="" disabled selected>Seleccione un color</option>
+            <option value="negro" id="negro">Negro 0</option>
+            <option value="marron" id="marron">Marrón 1</option>
+            <option value="rojo" id="rojo">Rojo 2</option>
+            <option value="naranja" id="naranja">Naranja 3</option>
+            <option value="amarillo" id="amarillo">Amarillo 4</option>
+            <option value="verde" id="verde">Verde 5</option>
+            <option value="azul" id="azul">Azul 6</option>
+            <option value="violeta" id="violeta">Violeta 7</option>
+            <option value="gris" id="gris">Gris 8</option>
+            <option value="blanco" id="blanco">Blanco 9</option>
+        </select>
+    </p>
+    <p><strong id="banda">Banda 2:</strong>
+            <select id="banda2_4" onchange="mostrarColor('banda2_4')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="negro">Negro 0</option>
+                <option value="marron" id="marron">Marrón 1</option>
+                <option value="rojo" id="rojo">Rojo 2</option>
+                <option value="naranja" id="naranja">Naranja 3</option>
+                <option value="amarillo" id="amarillo">Amarillo 4</option>
+                <option value="verde" id="verde">Verde 5</option>
+                <option value="azul" id="azul">Azul 6</option>
+                <option value="violeta" id="violeta">Violeta 7</option>
+                <option value="gris" id="gris">Gris 8</option>
+                <option value="blanco" id="blanco">Blanco 9</option>
+            </select>
+        </p>
+        <p><strong id="banda">Multiplicador:</strong>
+            <select id="multiplicador_4" onchange="mostrarColor('multiplicador_4')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="color-negro">Negro x1 Ω</option>
+                <option value="marron" id="color-marron">Marrón x10 Ω</option>
+                <option value="rojo" id="color-rojo">Rojo x100 Ω</option>
+                <option value="naranja" id="color-naranja">Naranja x1 kΩ</option>
+                <option value="amarillo" id="color-amarillo">Amarillo x10 kΩ</option>
+                <option value="verde" id="color-verde">Verde x100 kΩ</option>
+                <option value="azul" id="color-azul">Azul x1 MΩ</option>
+                <option value="violeta" id="color-violeta">Violeta x10 MΩ</option>
+                <option value="gris" id="color-gris">Gris x100 MΩ</option>
+                <option value="blanco" id="color-blanco">Blanco x1 GΩ</option>
+                <option value="oro" id="color-oro">Oro x0.1 Ω</option>
+                <option value="plata" id="color-plata">Plata x0.01 Ω</option>
+            </select>
+        </p>
+             
+        <p><strong id="banda">Tolerancia:</strong>
+            <select id="tolerancia_4" onchange="mostrarColor('tolerancia_4')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="marron" id="tolerancia-marron">Marrón ± 1%</option>
+                <option value="rojo" id="tolerancia-rojo">Rojo ± 2%</option>
+                <option value="verde" id="tolerancia-verde">Verde ± 0.5%</option>
+                <option value="azul" id="tolerancia-azul">Azul ± 0.25%</option>
+                <option value="violeta" id="tolerancia-violeta">Violeta ± 0.1%</option>
+                <option value="gris" id="tolerancia-gris">Gris ± 0.05%</option>
+                <option value="oro" id="tolerancia-oro">Oro ± 5%</option>
+                <option value="plata" id="tolerancia-plata">Plata ± 10%</option>
+            </select>
+        </p>
+        
+        <button onclick="calcularResistencia(4)">Calcular</button>
+
+    <div id="resultado1">
+        <!-- Aquí se mostrarán los resultados -->
+    </div>
+</div>
+    <!-- 5 BANDAS -->
+
+    <div id="5bandas" class="tab">
+        <p><strong>Valor de resistencia (en ohmios):</strong>
+            <input type="number" id="valor_resistencia_5" onchange="actualizarColores()" />
+        </p>
+        <button onclick="calcularColores(5)">Calcular</button>
+        <p><strong>Banda 1:</strong>
+            <select id="banda1_5" onchange="mostrarColor('banda1_5')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="negro">Negro 0</option>
+                <option value="marron" id="marron">Marrón 1</option>
+                <option value="rojo" id="rojo">Rojo 2</option>
+                <option value="naranja" id="naranja">Naranja 3</option>
+                <option value="amarillo" id="amarillo">Amarillo 4</option>
+                <option value="verde" id="verde">Verde 5</option>
+                <option value="azul" id="azul">Azul 6</option>
+                <option value="violeta" id="violeta">Violeta 7</option>
+                <option value="gris" id="gris">Gris 8</option>
+                <option value="blanco" id="blanco">Blanco 9</option>
+            </select>
+        </p>
+        <p><strong>Banda 2:</strong>
+            <select id="banda2_5" onchange="mostrarColor('banda2_5')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="negro">Negro 0</option>
+                <option value="marron" id="marron">Marrón 1</option>
+                <option value="rojo" id="rojo">Rojo 2</option>
+                <option value="naranja" id="naranja">Naranja 3</option>
+                <option value="amarillo" id="amarillo">Amarillo 4</option>
+                <option value="verde" id="verde">Verde 5</option>
+                <option value="azul" id="azul">Azul 6</option>
+                <option value="violeta" id="violeta">Violeta 7</option>
+                <option value="gris" id="gris">Gris 8</option>
+                <option value="blanco" id="blanco">Blanco 9</option>
+            </select>
+        </p>
+        <p><strong>Banda 3:</strong>
+            <select id="banda3_5" onchange="mostrarColor('banda3_5')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="negro">Negro 0</option>
+                <option value="marron" id="marron">Marrón 1</option>
+                <option value="rojo" id="rojo">Rojo 2</option>
+                <option value="naranja" id="naranja">Naranja 3</option>
+                <option value="amarillo" id="amarillo">Amarillo 4</option>
+                <option value="verde" id="verde">Verde 5</option>
+                <option value="azul" id="azul">Azul 6</option>
+                <option value="violeta" id="violeta">Violeta 7</option>
+                <option value="gris" id="gris">Gris 8</option>
+                <option value="blanco" id="blanco">Blanco 9</option>
+            </select>
+        </p>
+        <p><strong>Multiplicador:</strong>
+            <select id="multiplicador_5" onchange="mostrarColor('multiplicador_5')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="color-negro">Negro x1 Ω</option>
+                <option value="marron" id="color-marron">Marrón x10 Ω</option>
+                <option value="rojo" id="color-rojo">Rojo x100 Ω</option>
+                <option value="naranja" id="color-naranja">Naranja x1 kΩ</option>
+                <option value="amarillo" id="color-amarillo">Amarillo x10 kΩ</option>
+                <option value="verde" id="color-verde">Verde x100 kΩ</option>
+                <option value="azul" id="color-azul">Azul x1 MΩ</option>
+                <option value="violeta" id="color-violeta">Violeta x10 MΩ</option>
+                <option value="gris" id="color-gris">Gris x100 MΩ</option>
+                <option value="blanco" id="color-blanco">Blanco x1 GΩ</option>
+                <option value="oro" id="color-oro">Oro x0.1 Ω</option>
+                <option value="plata" id="color-plata">Plata x0.01 Ω</option>
+            </select>
+        </p>
+        <p><strong>Tolerancia:</strong>
+            <select id="tolerancia_5" onchange="mostrarColor('tolerancia_5')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="marron" id="tolerancia-marron">Marrón ± 1%</option>
+                <option value="rojo" id="tolerancia-rojo">Rojo ± 2%</option>
+                <option value="verde" id="tolerancia-verde">Verde ± 0.5%</option>
+                <option value="azul" id="tolerancia-azul">Azul ± 0.25%</option>
+                <option value="violeta" id="tolerancia-violeta">Violeta ± 0.1%</option>
+                <option value="gris" id="tolerancia-gris">Gris ± 0.05%</option>
+                <option value="oro" id="tolerancia-oro">Oro ± 5%</option>
+                <option value="plata" id="tolerancia-plata">Plata ± 10%</option>
+            </select>
+        </p>
+        <button onclick="calcularResistencia(5)">Calcular</button>
+
+    <div id="resultado2">
+        <!-- Aquí se mostrarán los resultados -->
+    </div>
+</div>
+
+    <!-- 6 BANDAS-->
+
+    <div id="6bandas" class="tab">
+        <p><strong>Valor de resistencia (en ohmios):</strong>
+            <input type="number" id="valor_resistencia_6" onchange="actualizarColores()" />
+        </p>
+        <button onclick="calcularColores(6)">Calcular</button>
+        <p><strong>Banda 1:</strong>
+            <select id="banda1_6" onchange="mostrarColor('banda1_6')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="negro">Negro 0</option>
+                <option value="marron" id="marron">Marrón 1</option>
+                <option value="rojo" id="rojo">Rojo 2</option>
+                <option value="naranja" id="naranja">Naranja 3</option>
+                <option value="amarillo" id="amarillo">Amarillo 4</option>
+                <option value="verde" id="verde">Verde 5</option>
+                <option value="azul" id="azul">Azul 6</option>
+                <option value="violeta" id="violeta">Violeta 7</option>
+                <option value="gris" id="gris">Gris 8</option>
+                <option value="blanco" id="blanco">Blanco 9</option>
+            </select>
+        </p>
+        <p><strong>Banda 2:</strong>
+            <select id="banda2_6" onchange="mostrarColor('banda2_6')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="negro">Negro 0</option>
+                <option value="marron" id="marron">Marrón 1</option>
+                <option value="rojo" id="rojo">Rojo 2</option>
+                <option value="naranja" id="naranja">Naranja 3</option>
+                <option value="amarillo" id="amarillo">Amarillo 4</option>
+                <option value="verde" id="verde">Verde 5</option>
+                <option value="azul" id="azul">Azul 6</option>
+                <option value="violeta" id="violeta">Violeta 7</option>
+                <option value="gris" id="gris">Gris 8</option>
+                <option value="blanco" id="blanco">Blanco 9</option>
+            </select>
+        </p>
+        <p><strong>Banda 3:</strong>
+            <select id="banda3_6" onchange="mostrarColor('banda3_6')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="negro">Negro 0</option>
+                <option value="marron" id="marron">Marrón 1</option>
+                <option value="rojo" id="rojo">Rojo 2</option>
+                <option value="naranja" id="naranja">Naranja 3</option>
+                <option value="amarillo" id="amarillo">Amarillo 4</option>
+                <option value="verde" id="verde">Verde 5</option>
+                <option value="azul" id="azul">Azul 6</option>
+                <option value="violeta" id="violeta">Violeta 7</option>
+                <option value="gris" id="gris">Gris 8</option>
+                <option value="blanco" id="blanco">Blanco 9</option>
+            </select>
+        </p>
+        <p><strong>Multiplicador:</strong>
+            <select id="multiplicador_6" onchange="mostrarColor('multiplicador_6')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="color-negro">Negro x1 Ω</option>
+                <option value="marron" id="color-marron">Marrón x10 Ω</option>
+                <option value="rojo" id="color-rojo">Rojo x100 Ω</option>
+                <option value="naranja" id="color-naranja">Naranja x1 kΩ</option>
+                <option value="amarillo" id="color-amarillo">Amarillo x10 kΩ</option>
+                <option value="verde" id="color-verde">Verde x100 kΩ</option>
+                <option value="azul" id="color-azul">Azul x1 MΩ</option>
+                <option value="violeta" id="color-violeta">Violeta x10 MΩ</option>
+                <option value="gris" id="color-gris">Gris x100 MΩ</option>
+                <option value="blanco" id="color-blanco">Blanco x1 GΩ</option>
+                <option value="oro" id="color-oro">Oro x0.1 Ω</option>
+                <option value="plata" id="color-plata">Plata x0.01 Ω</option>
+            </select>
+        </p>
+        <p><strong>Tolerancia:</strong>
+            <select id="tolerancia_6" onchange="mostrarColor('tolerancia_6')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="marron" id="tolerancia-marron">Marrón ± 1%</option>
+                <option value="rojo" id="tolerancia-rojo">Rojo ± 2%</option>
+                <option value="verde" id="tolerancia-verde">Verde ± 0.5%</option>
+                <option value="azul" id="tolerancia-azul">Azul ± 0.25%</option>
+                <option value="violeta" id="tolerancia-violeta">Violeta ± 0.1%</option>
+                <option value="gris" id="tolerancia-gris">Gris ± 0.05%</option>
+                <option value="oro" id="tolerancia-oro">Oro ± 5%</option>
+                <option value="plata" id="tolerancia-plata">Plata ± 10%</option>
+            </select>
+        </p>
+        <p><strong>PPM:</strong>
+            <select id="ppm_6" onchange="mostrarColor('ppm_6')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="marron" id="ppm-marron">Marrón 100 ppm</option>
+                <option value="rojo" id="ppm-rojo">Rojo 50 ppm</option>
+                <option value="naranja" id="ppm-naranja">Naranja 15 ppm</option>
+                <option value="amarillo" id="ppm-amarillo">Amarillo 25 ppm</option>
+                <option value="azul" id="ppm-azul">Azul 10 ppm</option>
+                <option value="violeta" id="ppm-violeta">Violeta 5 ppm</option>
+            </select>
+        </p>
+        <button onclick="calcularResistencia(6)">Calcular</button>
+    <div id="resultado3">
+        <!-- Aquí se mostrarán los resultados -->
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
