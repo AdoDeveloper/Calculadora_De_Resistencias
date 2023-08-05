@@ -24,7 +24,7 @@ h1 {
 }
 
 button {
-  max-width: 130px;
+  max-width: 100px;
   background-color: #4d88ff;
   color: white;
   border: none;
@@ -41,7 +41,7 @@ button:hover {
 
 /* Estilos para los botones de selección de bandas */
 .banda-btn {
-  max-width: 130px;
+  max-width: 100px;
   background-color: #41b623;
   color: white;
   border: none;
