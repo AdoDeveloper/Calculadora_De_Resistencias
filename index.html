@@ -7,16 +7,77 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Calculadora de Resistencias</h1>
+    <h2>Calculadora de Resistencias</h2>
 
 <!-- Pestañas para seleccionar la cantidad de bandas -->
+<button class="banda-btn" onclick="abrirTab(event, '3bandas')">3 Bandas</button>
 <button class="banda-btn" onclick="abrirTab(event, '4bandas')">4 Bandas</button>
 <button class="banda-btn" onclick="abrirTab(event, '5bandas')">5 Bandas</button>
 <button class="banda-btn" onclick="abrirTab(event, '6bandas')">6 Bandas</button>
 
+ <!-- Calculadora para 5 bandas -->
+ <div id="3bandas" class="tab active-tab">
+    <p><strong>Valor de resistencia (en ohmios):</strong>
+        <input type="number" id="valor_resistencia_3" onchange="actualizarColores()" />
+    </p>
+    <button onclick="calcularColores(3)">Calcular</button>
+    <p><strong id="banda">Banda 1:</strong>
+        <select id="banda1_3" onchange="mostrarColor('banda1_3')">
+            <option value="" disabled selected>Seleccione un color</option>
+            <option value="negro" id="negro">Negro 0</option>
+            <option value="marron" id="marron">Marrón 1</option>
+            <option value="rojo" id="rojo">Rojo 2</option>
+            <option value="naranja" id="naranja">Naranja 3</option>
+            <option value="amarillo" id="amarillo">Amarillo 4</option>
+            <option value="verde" id="verde">Verde 5</option>
+            <option value="azul" id="azul">Azul 6</option>
+            <option value="violeta" id="violeta">Violeta 7</option>
+            <option value="gris" id="gris">Gris 8</option>
+            <option value="blanco" id="blanco">Blanco 9</option>
+        </select>
+    </p>
+    <p><strong id="banda">Banda 2:</strong>
+            <select id="banda2_3" onchange="mostrarColor('banda2_3')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="negro">Negro 0</option>
+                <option value="marron" id="marron">Marrón 1</option>
+                <option value="rojo" id="rojo">Rojo 2</option>
+                <option value="naranja" id="naranja">Naranja 3</option>
+                <option value="amarillo" id="amarillo">Amarillo 4</option>
+                <option value="verde" id="verde">Verde 5</option>
+                <option value="azul" id="azul">Azul 6</option>
+                <option value="violeta" id="violeta">Violeta 7</option>
+                <option value="gris" id="gris">Gris 8</option>
+                <option value="blanco" id="blanco">Blanco 9</option>
+            </select>
+        </p>
+        <p><strong id="banda">Multiplicador:</strong>
+            <select id="multiplicador_3" onchange="mostrarColor('multiplicador_3')">
+                <option value="" disabled selected>Seleccione un color</option>
+                <option value="negro" id="color-negro">Negro x1 Ω</option>
+                <option value="marron" id="color-marron">Marrón x10 Ω</option>
+                <option value="rojo" id="color-rojo">Rojo x100 Ω</option>
+                <option value="naranja" id="color-naranja">Naranja x1 kΩ</option>
+                <option value="amarillo" id="color-amarillo">Amarillo x10 kΩ</option>
+                <option value="verde" id="color-verde">Verde x100 kΩ</option>
+                <option value="azul" id="color-azul">Azul x1 MΩ</option>
+                <option value="violeta" id="color-violeta">Violeta x10 MΩ</option>
+                <option value="gris" id="color-gris">Gris x100 MΩ</option>
+                <option value="blanco" id="color-blanco">Blanco x1 GΩ</option>
+                <option value="oro" id="color-oro">Oro x0.1 Ω</option>
+                <option value="plata" id="color-plata">Plata x0.01 Ω</option>
+            </select>
+        </p>
+            
+        <button onclick="calcularResistencia(3)">Calcular</button>
+
+    <div id="resultado1">
+        <!-- Aquí se mostrarán los resultados -->
+    </div>
+</div>
 
     <!-- Calculadora para 4 bandas -->
-<div id="4bandas" class="tab active-tab">
+<div id="4bandas" class="tab">
     <p><strong>Valor de resistencia (en ohmios):</strong>
         <input type="number" id="valor_resistencia_4" onchange="actualizarColores()" />
     </p>
@@ -85,7 +146,7 @@
         
         <button onclick="calcularResistencia(4)">Calcular</button>
 
-    <div id="resultado1">
+    <div id="resultado2">
         <!-- Aquí se mostrarán los resultados -->
     </div>
 </div>
@@ -173,7 +234,7 @@
         </p>
         <button onclick="calcularResistencia(5)">Calcular</button>
 
-    <div id="resultado2">
+    <div id="resultado3">
         <!-- Aquí se mostrarán los resultados -->
     </div>
 </div>
@@ -272,7 +333,7 @@
             </select>
         </p>
         <button onclick="calcularResistencia(6)">Calcular</button>
-    <div id="resultado3">
+    <div id="resultado4">
         <!-- Aquí se mostrarán los resultados -->
     </div>
 </div>

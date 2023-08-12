@@ -25,7 +25,12 @@ function calcularResistencia(numBandas) {
   // Obtener los valores seleccionados para cada banda
   let banda1, banda2, banda3, multiplicador, tolerancia, ppm;
 
-  if (numBandas === 4) {
+  if(numBandas === 3){
+    banda1 = document.getElementById("banda1_3").value;
+    banda2 = document.getElementById("banda2_3").value;
+    multiplicador = document.getElementById("multiplicador_3").value;
+  }
+  else if (numBandas === 4) {
     banda1 = document.getElementById("banda1_4").value;
     banda2 = document.getElementById("banda2_4").value;
     multiplicador = document.getElementById("multiplicador_4").value;
@@ -43,7 +48,7 @@ function calcularResistencia(numBandas) {
     multiplicador = document.getElementById("multiplicador_6").value;
     tolerancia = document.getElementById("tolerancia_6").value;
     ppm = document.getElementById("ppm_6").value;
-  }
+  } 
 
   // Valores correspondientes a cada color para multiplicadores y tolerancia
   const multiplicadoresValores = {
@@ -98,7 +103,11 @@ function calcularResistencia(numBandas) {
 
   // Calcular el valor de la resistencia
   let valorResistencia;
-  if (numBandas === 4) {
+  if (numBandas === 3) {
+    valorResistencia =
+      (colores[banda1] * 10 + colores[banda2]) *
+      multiplicadoresValores[multiplicador];
+  } else if (numBandas === 4) {
     if (banda1 === "negro" && banda2 === "negro") {
       valorResistencia = 0; // Caso especial cuando las bandas 1 y 2 son negras (resultado 0 ohmios)
     } else {
@@ -157,19 +166,29 @@ function calcularResistencia(numBandas) {
 
   // Mostrar los resultados en el div correspondiente
   let resultadoDiv;
-  if (numBandas === 4) {
+  if (numBandas === 3) {
     resultadoDiv = document.getElementById("resultado1");
-  } else if (numBandas === 5) {
+  } else if (numBandas === 4) {
     resultadoDiv = document.getElementById("resultado2");
-  } else if (numBandas === 6) {
+  } else if (numBandas === 5) {
     resultadoDiv = document.getElementById("resultado3");
+  } else if(numBandas === 6){
+    resultadoDiv = document.getElementById('resultado4');
   }
 
 // Agregar el código HTML con los resultados
-resultadoDiv.innerHTML = `
+if(numBandas === 3){
+  resultadoDiv.innerHTML = `
+  <p>Valor de la resistencia: <span id="valor_resistencia_result_${numBandas}">${valorResistencia} Ohms</span></p>
+  <p>Tolerancia: <span id="valor_tolerancia_result">20%</span></p>
+`;
+}else{
+  resultadoDiv.innerHTML = `
   <p>Valor de la resistencia: <span id="valor_resistencia_result_${numBandas}">${valorResistencia} Ohms</span></p>
   <p>Tolerancia: <span id="valor_tolerancia_result">${valorTolerancia}%</span></p>
 `;
+}
+
 
 if (valorPpm) {
   resultadoDiv.innerHTML += `<p>Coeficiente de temperatura (PPM): <span id="valor_ppm_result">${valorPpm}</span></p>`;
@@ -269,6 +288,149 @@ function rgbToHex(rgb) {
     return hex.length === 1 ? "0" + hex : hex;
   });
   return "#" + hexValues.join("");
+}
+
+// Colores para 4 bandas
+
+function obtenerColorPorValor3(valor) {
+  var valorNumerico = parseFloat(valor);
+  var coloresBanda1 = [
+    "negro",
+    "marron",
+    "rojo",
+    "naranja",
+    "amarillo",
+    "verde",
+    "azul",
+    "violeta",
+    "gris",
+    "blanco",
+  ];
+  var coloresBanda2 = [
+    "negro",
+    "marron",
+    "rojo",
+    "naranja",
+    "amarillo",
+    "verde",
+    "azul",
+    "violeta",
+    "gris",
+    "blanco",
+  ];
+  var coloresMultiplicador = {
+    1: "negro",
+    10: "marron",
+    100: "rojo",
+    1000: "naranja",
+    10000: "amarillo",
+    100000: "verde",
+    1000000: "azul",
+    10000000: "violeta",
+    100000000: "gris",
+    1000000000: "blanco",
+    0.1: "oro",
+    0.01: "plata",
+  };
+
+  // Convertimos el valor de resistencia en un array de dígitos
+  var valorCadena = valorNumerico.toString();
+  let digitos;
+  var puntoDecimal = valorCadena.indexOf(".");
+
+  // Si el valor tiene un punto decimal, separar los dígitos antes y después del punto
+  if (puntoDecimal !== -1) {
+    var parteEntera = valorCadena.substring(0, puntoDecimal);
+    var parteDecimal = valorCadena.substring(puntoDecimal + 1);
+    digitos = parteEntera.split("").concat(parteDecimal.split("")).map(Number);
+  } else {
+    digitos = valorCadena.split("").map(Number);
+  }
+
+  // Verificar si el valor es un número entero seguido de ".0"
+  var valorEntero = parseFloat(parteEntera);
+  var esEnteroPuntoCero = !isNaN(valorEntero) && parteDecimal === "0";
+  var numEntero = parseInt(valorNumerico);
+
+  // Obtenemos el color para cada banda/multiplicador usando el dígito correspondiente
+  var colorBanda1;
+  var colorBanda2;
+  var multiplicador;
+
+  if (valorNumerico >= 1.1 && puntoDecimal === 1) {
+    colorBanda1 = coloresBanda1[digitos[0]]; // Banda 1 es el primer digito
+    colorBanda2 = coloresBanda2[digitos[puntoDecimal]]; // Banda 2 es el primer dígito después del punto
+    multiplicador = 0.1; // Multiplicador es x0.1
+  } else if (
+    valorNumerico >= 0.01 &&
+    valorNumerico <= 0.09 &&
+    puntoDecimal !== -1
+  ) {
+    // Caso especial para valores entre 0.01 y 0.09 con punto decimal
+    colorBanda1 = coloresBanda1[0]; // Banda 1 es negro (representando el 0)
+    colorBanda2 = coloresBanda2[digitos[puntoDecimal + 1]]; // Banda 2 es el segundo dígito después del punto
+    multiplicador = 0.01; // Multiplicador es x0.01 para valores entre 0.01 y 0.09
+  } else if (
+    valorNumerico >= 0.1 &&
+    puntoDecimal === 1 &&
+    parteDecimal.length === 2
+  ) {
+    // Caso especial para valores entre 0.10 y 0.99 con punto decimal y dos dígitos después del punto
+    colorBanda1 = coloresBanda1[digitos[puntoDecimal]]; // Banda 1 es el primer digito despues del punto
+    colorBanda2 = coloresBanda2[digitos[puntoDecimal + 1]]; // Banda 2 es el segundo dígito después del punto
+    multiplicador = 0.01; // Multiplicador es x0.01 para valores entre 0.10 y 0.99
+  } else if (
+    valorNumerico >= 0.1 &&
+    valorNumerico <= 0.9 &&
+    puntoDecimal === 1
+  ) {
+    // Caso especial para valores entre 0.01 y 0.09 con punto decimal
+    colorBanda1 = coloresBanda1[digitos[0]]; // Banda 1 es el primer digito antes del punto
+    colorBanda2 = coloresBanda2[digitos[puntoDecimal]]; // Banda 2 es el primer dígito después del punto
+    multiplicador = 0.1; // Multiplicador es x0.01 para valores entre 0.01 y 0.09
+  } else if (valorNumerico >= 0.1 && puntoDecimal !== -1) {
+    // Caso especial para valores entre 0.10 y 0.99 con punto decimal y dos dígitos después del punto
+    colorBanda1 = coloresBanda1[digitos[puntoDecimal]]; // Banda 1 es el primer digito despues del punto
+    colorBanda2 = coloresBanda2[digitos[puntoDecimal + 1]]; // Banda 2 es el segundo dígito después del punto
+    multiplicador = 0.01; // Multiplicador es x0.01 para valores entre 0.10 y 0.99
+  } else if (
+    valorNumerico >= 1.0 &&
+    valorNumerico <= 9.0 &&
+    puntoDecimal === 1
+  ) {
+    // Casos especiales para valores como 1.0, 2.0, ..., 9.0
+    colorBanda2 = coloresBanda2[digitos[0]]; // Banda 1 es negro (representando el 0)
+    colorBanda1 = coloresBanda1[digitos[0]]; // Banda 2 es el color del dígito ingresado
+    multiplicador = 0.1; // Multiplicador es x1 para valores enteros de un dígito
+  } else if (valorNumerico >= 1.0 && valorNumerico <= 9.0) {
+    // Casos especiales para valores entre 1.0 y 9.0 (inclusive)
+    colorBanda1 = coloresBanda1[digitos[0]]; // Banda 1 es el color del primer dígito antes del punto
+    colorBanda2 = coloresBanda2[0]; // Banda 2 es negro (representando el 0)
+    multiplicador = 0.1; // Multiplicador es x0.1
+  } else if (puntoDecimal !== -1) {
+    // Si el valor tiene punto decimal
+    colorBanda1 = coloresBanda1[digitos[0]]; // Banda 1 es el primer dígito antes del punto
+    colorBanda2 = coloresBanda2[digitos[1]]; // Banda 2 es el color del dígito después del punto
+    multiplicador = 0.1; // Multiplicador es x0.1 para valores con punto decimal
+  } else if (digitos.length === 1) {
+    // Si el valor tiene un solo dígito y no tiene punto decimal
+    colorBanda1 = coloresBanda1[digitos[0]]; // Banda 1 es el color del primer dígito ingresado
+    colorBanda2 = coloresBanda2[0]; // Banda 2 es negro (representando el 0)
+    multiplicador = 1; // Multiplicador es x1 para valores enteros de un dígito
+  } else {
+    // Si el valor tiene más de un dígito y no tiene punto decimal
+    colorBanda1 = coloresBanda1[digitos[0]]; // Banda 1 es el color del primer dígito
+    colorBanda2 = coloresBanda2[digitos[1]]; // Banda 2 es el color del segundo dígito
+    multiplicador = Math.pow(10, digitos.length - 2); // Cálculo del multiplicador
+  }
+
+  var colorMultiplicador = coloresMultiplicador[multiplicador];
+
+  return {
+    banda1: colorBanda1,
+    banda2: colorBanda2,
+    multiplicador: colorMultiplicador,
+  };
 }
 
 // Colores para 4 bandas
@@ -724,7 +886,18 @@ function obtenerColorPorValor6(valor) {
 
 function calcularColores(numBandas) {
   var valorResistencia;
-  if (numBandas === 4) {
+  if(numBandas === 3){
+    valorResistencia = document.getElementById("valor_resistencia_3").value;
+    var colores3 = obtenerColorPorValor3(valorResistencia);
+
+    document.getElementById("banda1_3").value = colores3.banda1;
+    document.getElementById("banda2_3").value = colores3.banda2;
+    document.getElementById("multiplicador_3").value = colores3.multiplicador;
+    mostrarColor("banda1_3");
+    mostrarColor("banda2_3");
+    mostrarColor("multiplicador_3");
+  }
+  else if (numBandas === 4) {
     valorResistencia = document.getElementById("valor_resistencia_4").value;
     var colores4 = obtenerColorPorValor4(valorResistencia);
 
