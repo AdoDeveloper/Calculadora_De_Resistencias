@@ -187,3 +187,18 @@ button[onclick^="calcular"]:hover {
   #ppm-amarillo { background-color: #FFFF00; }
   #ppm-azul { background-color: #0000FF; color: #fff; }
   #ppm-violeta { background-color: #EE82EE; }
+
+  footer {
+    text-align: center;
+    background-color: #f4f4f4;
+    bottom: 0;
+    padding: 20px;
+    width: 100%;
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+  }
+  
