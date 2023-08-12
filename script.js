@@ -180,7 +180,7 @@ function calcularResistencia(numBandas) {
 if(numBandas === 3){
   resultadoDiv.innerHTML = `
   <p>Valor de la resistencia: <span id="valor_resistencia_result_${numBandas}">${valorResistencia} Ohms</span></p>
-  <p>Tolerancia: <span id="valor_tolerancia_result">20%</span></p>
+  <p>Tolerancia: <span>20%</span></p>
 `;
 }else{
   resultadoDiv.innerHTML = `
@@ -255,9 +255,6 @@ function actualizarUnidad(valor, numBandas) {
 }
 
 
-
-
-
 function mostrarColor(selectId) {
   var select = document.getElementById(selectId);
   var color = window.getComputedStyle(
@@ -290,7 +287,7 @@ function rgbToHex(rgb) {
   return "#" + hexValues.join("");
 }
 
-// Colores para 4 bandas
+// Colores para 3 bandas
 
 function obtenerColorPorValor3(valor) {
   var valorNumerico = parseFloat(valor);

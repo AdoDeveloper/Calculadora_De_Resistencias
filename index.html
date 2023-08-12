@@ -10,7 +10,7 @@
     <h2>Calculadora de Resistencias</h2>
 
 <!-- Pestañas para seleccionar la cantidad de bandas -->
-<button class="banda-btn" onclick="abrirTab(event, '3bandas')">3 Bandas</button>
+<button class="banda-btn active-btn" onclick="abrirTab(event, '3bandas')">3 Bandas</button>
 <button class="banda-btn" onclick="abrirTab(event, '4bandas')">4 Bandas</button>
 <button class="banda-btn" onclick="abrirTab(event, '5bandas')">5 Bandas</button>
 <button class="banda-btn" onclick="abrirTab(event, '6bandas')">6 Bandas</button>
@@ -38,17 +38,17 @@
     </p>
     <p><strong id="banda">Banda 2:</strong>
             <select id="banda2_3" onchange="mostrarColor('banda2_3')">
-                <option value="" disabled selected>Seleccione un color</option>
-                <option value="negro" id="negro">Negro 0</option>
-                <option value="marron" id="marron">Marrón 1</option>
-                <option value="rojo" id="rojo">Rojo 2</option>
-                <option value="naranja" id="naranja">Naranja 3</option>
-                <option value="amarillo" id="amarillo">Amarillo 4</option>
-                <option value="verde" id="verde">Verde 5</option>
-                <option value="azul" id="azul">Azul 6</option>
-                <option value="violeta" id="violeta">Violeta 7</option>
-                <option value="gris" id="gris">Gris 8</option>
-                <option value="blanco" id="blanco">Blanco 9</option>
+            <option value="" disabled selected>Seleccione un color</option>
+            <option value="negro" id="negro">Negro 0</option>
+            <option value="marron" id="marron">Marrón 1</option>
+            <option value="rojo" id="rojo">Rojo 2</option>
+            <option value="naranja" id="naranja">Naranja 3</option>
+            <option value="amarillo" id="amarillo">Amarillo 4</option>
+            <option value="verde" id="verde">Verde 5</option>
+            <option value="azul" id="azul">Azul 6</option>
+            <option value="violeta" id="violeta">Violeta 7</option>
+            <option value="gris" id="gris">Gris 8</option>
+            <option value="blanco" id="blanco">Blanco 9</option>
             </select>
         </p>
         <p><strong id="banda">Multiplicador:</strong>
